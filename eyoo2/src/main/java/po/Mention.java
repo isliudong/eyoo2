@@ -71,3 +71,4 @@ public class Mention {
         this.fanscount = fanscount;
     }
 }
+/*to iplempment the fucntion*/
