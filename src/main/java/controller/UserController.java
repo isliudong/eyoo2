@@ -80,8 +80,8 @@ public class UserController {
 		int flag = 0;
 		List<UserCustom> userList = userService.queryByUsername(username);
 		// 用户名长度 合法性 （只能由数字和字母组成）校验
-		if (username.length() < 5) {
-			request.setAttribute("error_username", "我已经跟你说了用户名长度必须大于4位");
+		if (username.length() < 1) {
+			request.setAttribute("error_username", "我已经跟你说了用户名长度必须大于1位");
 			flag = 1;
 		}
 		// 数据库username校验
@@ -91,8 +91,9 @@ public class UserController {
 		}
 		// 用户名合法性（数字字母）校验
 		String reg = "^[A-Za-z0-9]+$";
-		if (!username.matches(reg)) {
-			request.setAttribute("error_username", "用户名必须由数字和字母组成");
+		String reg1="^[\u4e00-\u9fa5_a-zA-Z0-9]+$";
+		if (!username.matches(reg1)) {
+			request.setAttribute("error_username", "用户名不合法");
 			flag = 1;
 		}
 		// 密码长度校验

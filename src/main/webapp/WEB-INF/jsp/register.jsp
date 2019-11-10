@@ -68,11 +68,11 @@
         var input_username = document.getElementById("username");
         var error_username = document.getElementById("error_username");
         //正则判断数字+字母
-        var reg=/^[A-Za-z0-9]+$/;
-        if(input_username.value.length<5){
-            error_username.innerHTML="用户名长度必须大于4";
+        var reg=/^[一-龥_a-zA-Z0-9]+$/;
+        if(input_username.value.length<1){
+            error_username.innerHTML="用户名长度必须大于1";
         } else if(!reg.test(input_username.value)){
-            error_username.innerHTML="用户名必须由数字和字母组成";
+            error_username.innerHTML="用户名不合法";
         } else {  
         	error_username.innerHTML= "";
         }
