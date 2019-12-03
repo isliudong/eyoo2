@@ -20,7 +20,7 @@ public class CollectController {
 	@Autowired
 	private CollectService collectService;
 	
-	// 收藏
+	// 收藏功能
 	@RequestMapping(value = "collect")
 	public void collect(
 			@RequestParam("eyooId") int eyooId,

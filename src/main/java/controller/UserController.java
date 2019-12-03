@@ -113,7 +113,7 @@ public class UserController {
 			flag = 1;
 		}
 		if (flag == 0) {
-			// 校验成功
+			// 验证成功
 			response.setCharacterEncoding("utf-8");
 			request.setAttribute("register_success", "注册成功 即刻登录");
 			User user = new User();
@@ -122,7 +122,7 @@ public class UserController {
 			userService.addUser(user);
 			return "login";
 		} else {
-			// 校验失败
+			// 验证失败
 			request.setAttribute("username", username);
 			return "register";
 		}
