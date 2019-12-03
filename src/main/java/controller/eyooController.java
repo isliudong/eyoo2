@@ -210,7 +210,7 @@ public class eyooController {
 		// 原始名称
 		String originalFilename = file.getOriginalFilename();
 		// 上传图片
-		if (file != null &&  originalFilename != null && originalFilename.length() > 0) {
+		if (file != null && originalFilename != null && originalFilename.length() > 0) {
 
 			// 存储图片的物理路径
 			String pic_path = "/usr/local/tomcat/apache-tomcat-9.0.27/webapps/eyoo/images/";
