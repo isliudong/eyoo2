@@ -47,7 +47,7 @@ public class RelationController {
 		relationService.follow(relation, flag);
 	}
 
-	// 取关
+	// 取消关注
 	@RequestMapping(value = "unfollow")
 	public void unfollow(HttpSession session, HttpServletResponse response, @RequestParam("flag") int flag, // 判断两人关系
 																				// 1：陌生
