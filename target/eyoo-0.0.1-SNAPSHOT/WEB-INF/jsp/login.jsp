@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>微博</title>
+    <title>Eyoo</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/bootstrap.min.css">
@@ -22,7 +22,7 @@
       <div class="site-wrapper-inner">
         <div class="cover-container">
           <div class="inner cover">
-            <h1 class="cover-heading">发现新鲜事！</h1>
+            <h1 class="cover-heading">发现不一样的校园！</h1>
             <h1 class="cover-heading" style="color: #52c250" name="register_success">${register_success }</h1>
             <h1 class="cover-heading" style="color: #52c250" name="register_success">${updatepassword_success }</h1>
             <form class="form-signin" action="${pageContext.request.contextPath }/loginUser.action" method="post">

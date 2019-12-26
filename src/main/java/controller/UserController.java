@@ -80,8 +80,8 @@ public class UserController {
 		int flag = 0;
 		List<UserCustom> userList = userService.queryByUsername(username);
 		// 用户名长度 合法性 （只能由数字和字母组成）校验
-		if (username.length() < 5) {
-			request.setAttribute("error_username", "我已经跟你说了用户名长度必须大于4位");
+		if (username.length() < 1) {
+			request.setAttribute("error_username", "我已经跟你说了用户名长度必须大于1位");
 			flag = 1;
 		}
 		// 数据库username校验
@@ -91,8 +91,9 @@ public class UserController {
 		}
 		// 用户名合法性（数字字母）校验
 		String reg = "^[A-Za-z0-9]+$";
-		if (!username.matches(reg)) {
-			request.setAttribute("error_username", "用户名必须由数字和字母组成");
+		String reg1="^[\u4e00-\u9fa5_a-zA-Z0-9]+$";
+		if (!username.matches(reg1)) {
+			request.setAttribute("error_username", "用户名不合法");
 			flag = 1;
 		}
 		// 密码长度校验
@@ -161,7 +162,7 @@ public class UserController {
 			user.setP(userService.queryPC(user.getProvince()));
 			user.setC(userService.queryPC(user.getCity()));
 
-			// 微博数wi
+			// Eyoo数wi
 			int eyooCount = userService.queryeyooCount(user.getUserId());
 			// 关注
 			int followCount = userService.queryFollowCount(user.getUserId());
@@ -222,7 +223,7 @@ public class UserController {
 		if (user_face != null && originalFilename != null && originalFilename.length() > 0) {
 
 			// 存储图片的物理路径
-			String pic_path = "D:\\Eyoo\\src\\main\\resources\\img";
+			String pic_path = "/usr/local/tomcat/apache-tomcat-9.0.27/webapps/eyoo/images/";
 
 			// 新的图片名称
 			String newFileName = UUID.randomUUID() + originalFilename.substring(originalFilename.lastIndexOf("."));
@@ -247,7 +248,7 @@ public class UserController {
 		user.setMentionCustom(mention);
 		// 用户年龄
 		user.setAge(userService.calculateAge(user.getBir()));
-		// 微博数wi
+		// Eyoo数wi
 		int eyooCount = userService.queryeyooCount(user.getUserId());
 		// 关注
 		int followCount = userService.queryFollowCount(user.getUserId());
@@ -321,7 +322,7 @@ public class UserController {
 		for (eyooCustom eyooCustom : page.getResults()) {
 			// 将date格式化 精确到s
 			eyooCustom.setDate(dateConvert.convert2s(eyooCustom.getPostTime()));
-			// 非原创 即属于转发微博
+			// 非原创 即属于转发Eyoo
 			if (eyooCustom.getOriginal() == 0) {
 				eyooCustom reposteyoo = eyooService.queryeyooByeyooId(eyooCustom.getRepostId()).get(0);
 				reposteyoo.setDate(dateConvert.convert2s(reposteyoo.getPostTime()));
@@ -363,11 +364,11 @@ public class UserController {
 		int relation = relationService.queryRelation(user.getUserId(), others.getUserId());
 		model.addAttribute("relation", relation);
 
-		// 遍历微博
+		// 遍历Eyoo
 		Page<eyooCustom> page = eyooService.qeuryByUserId(userId,pageNo);
 		for (eyooCustom eyooCustom : page.getResults()) {
 			eyooCustom.setDate(dateConvert.convert2s(eyooCustom.getPostTime()));
-			// 非原创 即属于转发微博
+			// 非原创 即属于转发Eyoo
 			if (eyooCustom.getOriginal() == 0) {
 				eyooCustom reposteyoo = eyooService.queryeyooByeyooId(eyooCustom.getRepostId()).get(0);
 				reposteyoo.setDate(dateConvert.convert2s(reposteyoo.getPostTime()));
@@ -375,7 +376,7 @@ public class UserController {
 			}
 		}
 		model.addAttribute("eyooList", page.getResults());
-		// 微博数
+		// Eyoo数
 		int eyooCount = userService.queryeyooCount(userId);
 		// 关注
 		int followCount = userService.queryFollowCount(userId);

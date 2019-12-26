@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>微博</title>
+    <title>Eyoo</title>
     <!-- Bootstrap -->
     <link href="${pageContext.request.contextPath }/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/login.css">
@@ -22,7 +22,7 @@
         <div class="site-wrapper-inner">
             <div class="cover-container">
                 <div class="inner cover">
-                    <h1 class="cover-heading">发现新鲜事！</h1>
+                    <h1 class="cover-heading">给你不一样的校园！</h1>
                     <form class="form-signin" method="post" action="${pageContext.request.contextPath }/register.action">
                         <div class="from-group">
                             <span id="error_username" style="color: #ff5b5b; font-size: 17px" name="error_username">${error_username }</span>
@@ -68,11 +68,11 @@
         var input_username = document.getElementById("username");
         var error_username = document.getElementById("error_username");
         //正则判断数字+字母
-        var reg=/^[A-Za-z0-9]+$/;
-        if(input_username.value.length<5){
-            error_username.innerHTML="用户名长度必须大于4";
+        var reg=/^[一-龥_a-zA-Z0-9]+$/;
+        if(input_username.value.length<1){
+            error_username.innerHTML="用户名长度必须大于1";
         } else if(!reg.test(input_username.value)){
-            error_username.innerHTML="用户名必须由数字和字母组成";
+            error_username.innerHTML="用户名不合法";
         } else {  
         	error_username.innerHTML= "";
         }
